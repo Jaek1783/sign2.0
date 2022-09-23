@@ -1,11 +1,14 @@
 import React from 'react';
-
-function nav() {
+import {useNavigate} from 'react-router-dom';
+const Header = () => {
+    const navigate = useNavigate();
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <h1>Portfolio</h1>
+                    <h1 onClick={()=>{
+                        navigate('/');
+                    }}>Portfolio</h1>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
@@ -19,10 +22,14 @@ function nav() {
                     <div className="collapse d-flex" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <p className="nav-link" aria-current="page">Sign In</p>
+                                <p className="nav-link" aria-current="page" onClick={()=>{
+                                    navigate('/login');
+                                }}>Sign In</p>
                             </li>
                             <li className="nav-item">
-                                <p className="nav-link">Sign Up</p>
+                                <p className="nav-link" onClick={()=>{
+                                    navigate('/signUp');
+                                }}>Sign Up</p>
                             </li>
                         </ul>
                     </div>
@@ -32,4 +39,4 @@ function nav() {
     );
 }
 
-export default nav;
+export default Header;
