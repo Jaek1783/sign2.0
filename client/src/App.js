@@ -1,7 +1,8 @@
+import React, {useEffect} from 'react';
 import './App.css';
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 // You can specify which plugins you need
-
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Nav from './LandingPage/Nav';
@@ -10,7 +11,10 @@ import Login from './LoadingPage/Login';
 import SignUp from './LoadingPage/SignUp';
 
 function App() {
-
+  useEffect(()=>{
+    axios.get('/api/hello')
+    .then(response=>console.log(response));
+},[]);
   return (
     <div className="App">
       <Nav/>
