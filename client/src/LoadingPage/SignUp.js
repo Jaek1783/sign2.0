@@ -1,4 +1,4 @@
-import React,{useRef, useState} from 'react';
+import React,{useRef} from 'react';
 
 const SignUp = () => {
     const nameRef = useRef(null);
