@@ -11,10 +11,7 @@ import Login from './LoadingPage/Login';
 import SignUp from './LoadingPage/SignUp';
 
 function App() {
-  useEffect(()=>{
-    axios.get('/api/hello')
-    .then(response=>console.log(response));
-},[]);
+
   return (
     <div className="App">
       <Nav/>
