@@ -1,7 +1,6 @@
 import React, {useRef, useEffect} from 'react';
-
-import axois from 'axios';
 import axios from 'axios';
+
 const Login = () => {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
@@ -11,6 +10,9 @@ const Login = () => {
         console.log(user);
         emailRef.current.value="";
         passwordRef.current.value="";
+
+        axios.get('/api/hello')
+        .then(response=>console.log(response));
     }
     return (
         <div className='card' style={{width: 18 + 'rem', padding: 1 + 'rem', margin:`1rem auto`}}>
