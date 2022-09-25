@@ -1,7 +1,12 @@
+import axios from 'axios';
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
 const Header = () => {
     const navigate = useNavigate();
+    const Logout = ()=>{
+        axios.get('/api/users/logout')
+        .then(response =>{ console.log(response.data)});
+    }
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,6 +35,9 @@ const Header = () => {
                                 <p className="nav-link" onClick={()=>{
                                     navigate('/signUp');
                                 }}>Sign Up</p>
+                            </li>
+                            <li className="nav-item">
+                                <p className="nav-link" onClick={Logout}>Logout</p>
                             </li>
                         </ul>
                     </div>

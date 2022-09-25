@@ -1,17 +1,25 @@
+import { applyMiddleware } from '@reduxjs/toolkit';
 import React,{useRef} from 'react';
+import { useSelector,useDispatch } from 'react-redux';
+import {setName, setEmail, setPassword} from './../State/userSlice';
+import axios from 'axios';
 
 const SignUp = () => {
+    const userData = useSelector((state)=>state.userData);
+    const dispatch = useDispatch();
     const nameRef = useRef(null);
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
-    const user = [];
-const sign = ()=>{
-    user.push({
-        name:nameRef.current.value,
-        email:emailRef.current.value,
-        password:passwordRef.current.value
-    });
-    console.log(user);
+const sign = (event)=>{
+    event.preventDefault();
+
+    dispatch(setName(nameRef.current.value));
+    dispatch(setEmail(emailRef.current.value));
+    dispatch(setPassword(passwordRef.current.value));
+    let body = userData;
+    axios.post('/api/users/register', body)
+    .then(response => response.data);
+
     nameRef.current.value = "";
     emailRef.current.value = "";
     passwordRef.current.value = "";
@@ -31,9 +39,10 @@ const sign = ()=>{
                 <label htmlFor="exampleFormControlInput1" className="form-label">Password</label>
                 <input type="password" className="form-control" id="exampleFormControlInput1"  ref={passwordRef}/>
             </div>
-            <button type="button" className="btn btn-success" onClick={()=>{
-                sign();
-            }}>Sign Up</button>
+            <form  onSubmit = {sign} style={{width:`100%`}}>
+            <button type="submit" className="btn btn-success">Sign Up</button>
+            </form>
+
         </div>
     );
 }
