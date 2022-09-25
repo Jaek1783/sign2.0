@@ -1,13 +1,13 @@
 import React, {useRef} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
     const userData = useSelector((state)=> state.userData);
-    console.log(userData);
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
-
+    const navigate = useNavigate();
     const users = () =>{
         let user = {
             "email":emailRef.current.value,
@@ -19,6 +19,8 @@ const Login = () => {
 
         axios.post('api/users/login', user)
         .then(response => console.log(response.data));
+        // axios.get('')
+        navigate('/');
     }
     return (
         <div className='card' style={{width: 18 + 'rem', padding: 1 + 'rem', margin:`1rem auto`}}>

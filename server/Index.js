@@ -69,7 +69,10 @@ const server = ()=>{
             res.status(200).json({
                 _id:req.user._id,
                 isAdmin: req.user.role === 0 ? false : true,
-                email:req.email
+                isAuth:true,
+                name:req.name,
+                email:req.email,
+                role:req.user.role
             })
         });
 
