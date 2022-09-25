@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import './App.css';
 import {Routes, Route} from 'react-router-dom';
-// You can specify which plugins you need
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,7 +10,6 @@ import Login from './LoadingPage/Login';
 import SignUp from './LoadingPage/SignUp';
 
 function App() {
-
   return (
     <div className="App">
       <Nav/>

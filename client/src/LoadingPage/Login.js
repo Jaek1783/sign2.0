@@ -1,18 +1,24 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 const Login = () => {
+    const userData = useSelector((state)=> state.userData);
+    console.log(userData);
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
-    let user = [];
+
     const users = () =>{
-        user.push({email:emailRef.current.value,password:passwordRef.current.value});
+        let user = {
+            "email":emailRef.current.value,
+            "password":passwordRef.current.value
+        }
         console.log(user);
         emailRef.current.value="";
         passwordRef.current.value="";
 
-        axios.get('/api/hello')
-        .then(response=>console.log(response));
+        axios.post('api/users/login', user)
+        .then(response => console.log(response.data));
     }
     return (
         <div className='card' style={{width: 18 + 'rem', padding: 1 + 'rem', margin:`1rem auto`}}>

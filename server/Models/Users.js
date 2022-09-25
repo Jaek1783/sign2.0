@@ -12,6 +12,7 @@ const UserSchema = new mongoose.Schema({
     age:Number,
     email:{
         type:String,
+        required:true,
         trim:true, //email의 빈칸을 없애줌
         unique: 1
     },
