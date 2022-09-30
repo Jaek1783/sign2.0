@@ -5,7 +5,7 @@ const Header = () => {
     const navigate = useNavigate();
     const Logout = ()=>{
         axios.get('/api/users/logout')
-        .then(response =>{ console.log(response.data)});
+        .then(response =>response.data);
     }
     return (
         <div>
@@ -29,7 +29,7 @@ const Header = () => {
                             <li className="nav-item">
                                 <p className="nav-link" aria-current="page" onClick={()=>{
                                     navigate('/login');
-                                }}>Sign In</p>
+                                }}>Login</p>
                             </li>
                             <li className="nav-item">
                                 <p className="nav-link" onClick={()=>{

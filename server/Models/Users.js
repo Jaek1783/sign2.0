@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
+const {Schema, model} = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const saltRounds = 10;
 //스키마를 생성한다.
 //스키마에 생성 키, 벨류, 입력형식 등을 입력해준다.
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
     name:{
         type:String,
         required:true
@@ -84,5 +84,5 @@ UserSchema.statics.findByToken = function(token,cb) {
         });
     });
 }
-const User = mongoose.model('User',UserSchema);
+const User = model('User',UserSchema);
 module.exports = {User};
