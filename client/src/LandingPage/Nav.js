@@ -5,7 +5,7 @@ const Header = () => {
     const navigate = useNavigate();
     const Logout = ()=>{
         axios.get('/api/users/logout')
-        .then(response =>{ console.log(response.data)});
+        .then(response =>response.data);
     }
     return (
         <div>

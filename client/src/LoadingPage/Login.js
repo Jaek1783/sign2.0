@@ -18,7 +18,7 @@ const Login = () => {
         passwordRef.current.value="";
 
         axios.post('api/users/login', user)
-        .then(response => console.log(response.data));
+        .then(response => response.data);
         // axios.get('')
         navigate('/');
     }

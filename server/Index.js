@@ -13,6 +13,7 @@ app.use(cookieParser());
 
 const mongodbURI = config.mongoURI;
 const server = ()=>{
+    const db = {};
          mongoose.connect(mongodbURI);
       app.use(express.json());
 
@@ -31,8 +32,11 @@ const server = ()=>{
                     } 
                     
                 }); 
-                // return res.send({user});
         });
+        app.get('/api/users/register',async (req,res)=>{
+            let user = await User.find({});
+            res.json({user});
+        })
         app.post('/api/users/login',(req,res)=>{
             //요청된 이메일이 DB에 있는 지 확인
             User.findOne({email:req.body.email}, (err,user)=>{
