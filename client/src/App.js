@@ -8,6 +8,7 @@ import Main from './LandingPage/Main';
 import Login from './LoadingPage/Login';
 import SignUp from './LoadingPage/SignUp';
 import Auth from './hoc/auth';
+import axios from 'axios';
 
 function App() {
   return (

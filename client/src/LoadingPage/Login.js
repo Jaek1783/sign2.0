@@ -1,14 +1,16 @@
-import React, {useRef} from 'react';
-import { useSelector} from 'react-redux';
+import React, {useEffect, useRef, useState} from 'react';
+// import { useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
-    const userData = useSelector((state)=> state.userData);
+    // const userData = useSelector((state)=> state.userData);
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
+    const [userData, setUserData] = useState([]);
     const navigate = useNavigate();
-    const users = () =>{
+
+    const signIn = () =>{
         let user = {
             "email":emailRef.current.value,
             "password":passwordRef.current.value
@@ -18,8 +20,12 @@ const Login = () => {
         passwordRef.current.value="";
 
         axios.post('api/users/login', user)
-        .then(response => console.log(response.data));
-        // axios.get('')
+        .then(response => response.data);
+
+        axios.get('api/users/login')
+        .then(response => {
+            console.log(response.data);
+        })
         navigate('/');
     }
     return (
@@ -34,8 +40,8 @@ const Login = () => {
                 <input type="password" className="form-control" ref={passwordRef}/>
             </div>
             <button type="button" className="btn btn-success" onClick={()=>{
-                users();
-            }}>Join</button>
+                signIn();
+            }}>Login</button>
         </div>
     );
 }
