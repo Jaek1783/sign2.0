@@ -65,9 +65,6 @@ const server = ()=>{
                 }
             });
         });
-        app.get('/api/users/login',(req,res)=>{
-            res.send(req.body);
-        });
 
         app.get('/api/users/auth',auth,(req,res)=>{
             res.status(200).json({
@@ -87,6 +84,8 @@ const server = ()=>{
                 if(err) return res.json({success:false, err});
                 return res.status(200).send({
                     success:true
+                }).cookie('token', null, {
+                    maxAge: 0,
                 });
               });
         })
